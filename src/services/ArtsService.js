@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import axios from "axios"
 import { baseURL } from "../env.js"
 import { AppState } from "../AppState.js"
@@ -10,9 +11,14 @@ const artApi = axios.create({
 
 
 class ArtsService {
+  setActiveArtwork(artwork) {
+    AppState.activeArtwork = artwork
+    console.log('active', AppState.activeArtwork);
+  }
   async likeArt(artwork) {
     console.log('liking this art', artwork);
-    const response = await artApi.post(`/:${artwork.id}/admire`)
+    await artApi.post(`/${artwork.id}/admire`)
+    this.discoverArt()
   }
 
 

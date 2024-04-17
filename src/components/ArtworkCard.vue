@@ -2,13 +2,13 @@
 import { AppState } from '../AppState';
 import { computed, ref, onMounted } from 'vue';
 import { Artwork } from "../models/Artworks.js";
-import { Account } from "../models/Account.js";
+
 import { artsService } from "../services/ArtsService.js";
 import Pop from "../utils/Pop.js";
 
 defineProps({artwork: Artwork})
 const artworks = computed(()=> AppState.artworks)
-// const account = Account
+
 
 async function likeArt(artwork){
   try {
@@ -21,6 +21,11 @@ async function likeArt(artwork){
   }
 }
 
+function setActiveArtwork(artwork){
+  // console.log('artwork', artwork);
+  artsService.setActiveArtwork(artwork)
+}
+
 
 </script>
 
@@ -29,6 +34,11 @@ async function likeArt(artwork){
   <div class="artwork">
     <img :src="artwork.small" class="img-fluid" alt="" :title="artwork.description">
     <h4><i class="mdi mdi-heart-outline" role="button" @click="likeArt(artwork)"></i></h4>
+    
+          <router-link :to="{ name: 'Details' }" class="btn text-success lighten-30 selectable text-uppercase">
+            <button @click="setActiveArtwork(artwork)">Details</button>
+          </router-link>
+    
     <!-- <h4 v-if="artworks.admirers.includes(!AppState.user.id)"><i class="mdi mdi-heart-outline" role="button" @click="likeArt(artwork)"></i></h4> -->
     <!-- <h4 v-else><i class="mdi mdi-heart" role="button" @click="likeArt(artwork.id)"></i></h4> -->
     

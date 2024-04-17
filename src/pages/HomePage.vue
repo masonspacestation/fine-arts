@@ -51,7 +51,7 @@ async function changePage(pageNumber){
     <!-- <div v-for="artwork in artworks" :key="artwork.id" class="col-3"> -->
       <!-- <img :src="artwork.full" class="img-fluid" alt=""> -->
       
-      <ArtworkCard v-for="artwork in artworks" :key="artwork.id" :artwork="artwork" class="col-3 p-1" title="{{ art }}"/>  
+      <ArtworkCard v-for="artwork in artworks" :key="artwork.id" :artwork="artwork" class="col-4 p-3 g-3" title="{{ art }}"/>  
       <!-- </div> -->
   </section>
 </div>

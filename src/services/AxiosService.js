@@ -3,7 +3,7 @@ import { baseURL } from '../env'
 import { logger } from '../utils/Logger.js'
 
 export const api = Axios.create({
-  baseURL: 'https://sandbox.codeworksacademy.com/api',
+  baseURL: 'https://sandbox.codeworksacademy.com/',
   timeout: 8000
 })
 

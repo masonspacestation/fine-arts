@@ -15,6 +15,8 @@ export const AppState = reactive({
 
   totalPages: null,
 
+  activeArtwork: null,
+
 
 
 })
