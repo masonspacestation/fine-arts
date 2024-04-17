@@ -8,11 +8,14 @@ const artApi = axios.create({
   baseURL: 'https://sandbox.codeworksacademy.com/api/artworks',
 })
 
+
 class ArtsService {
-  async likeArt(id) {
-    const response = await artApi.post(`/:${{ id }}/admire`)
-    console.log('liking this art');
+  async likeArt(artwork) {
+    console.log('liking this art', artwork);
+    const response = await artApi.post(`/:${artwork.id}/admire`)
   }
+
+
   async changePage(url) {
     const response = await artApi.get(url)
     console.log('page 2 art', response.data);
@@ -21,6 +24,8 @@ class ArtsService {
     AppState.currentPage = response.data.page
     AppState.totalPages = response.data.pages
   }
+
+
   async discoverArt() {
     const response = await artApi.get('')
     console.log(response.data);

@@ -12,6 +12,7 @@ onMounted(()=>{
   discoverArt()
 })
 
+
 async function discoverArt() {
   try {
     await artsService.discoverArt()
@@ -21,6 +22,7 @@ async function discoverArt() {
     console.error(error)
   }
 }
+
 
 async function changePage(pageNumber){
   try {
@@ -38,19 +40,21 @@ async function changePage(pageNumber){
 </script>
 
 <template>
+<div class="container-fluid">
 
-  <section class="row justify-content-between text-center my-3">
+  <section class="row justify-content-between text-center px-5 my-3">
     <div class="col-3"><button :disabled="AppState.currentPage==1" @click="changePage(AppState.currentPage -1)" class="btn btn-secondary w-50"><i class="mdi mdi-arrow-left"></i> Previous</button></div>
     <div class="col-3">Page {{AppState.currentPage}} of {{ AppState.totalPages }}</div>
     <div class="col-3"><button :disabled="AppState.currentPage==AppState.totalPages" @click="changePage(AppState.currentPage +1)" class="btn btn-secondary w-50">Next <i class="mdi mdi-arrow-right"></i></button></div>
   </section>
- <section class="row">
-   <!-- <div v-for="artwork in artworks" :key="artwork.id" class="col-3"> -->
-    <!-- <img :src="artwork.full" class="img-fluid" alt=""> -->
-     
-     <ArtworkCard v-for="artwork in artworks" :key="artwork.id" :artwork="artwork" class="col-3 p-1" title="{{ art }}"/>  
-    <!-- </div> -->
+  <section class="row">
+    <!-- <div v-for="artwork in artworks" :key="artwork.id" class="col-3"> -->
+      <!-- <img :src="artwork.full" class="img-fluid" alt=""> -->
+      
+      <ArtworkCard v-for="artwork in artworks" :key="artwork.id" :artwork="artwork" class="col-3 p-1" title="{{ art }}"/>  
+      <!-- </div> -->
   </section>
+</div>
 </template>
 
 <style scoped lang="scss">
